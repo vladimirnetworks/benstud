@@ -22,6 +22,21 @@
   add
 </button>
 <script>
+
+CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
+  if (w < 2 * r) r = w / 2;
+  if (h < 2 * r) r = h / 2;
+  this.beginPath();
+  this.moveTo(x+r, y);
+  this.arcTo(x+w, y,   x+w, y+h, r);
+  this.arcTo(x+w, y+h, x,   y+h, r);
+  this.arcTo(x,   y+h, x,   y,   r);
+  this.arcTo(x,   y,   x+w, y,   r);
+  this.closePath();
+  return this;
+}
+
+
  function txt_height(ctx, txt) {
         let metrics = ctx.measureText(txt);
         let fontHeight =
@@ -79,26 +94,37 @@
         return lines;
       };
 
-      function faal() {
+      function faal(txts) {
         var x = $(
           '<canvas width="400" height="400" style="direction:rtl"></canvas>'
         );
         var ctx = x[0].getContext('2d');
 
          w = 400;
-
+         d0 = 0.01;
          d1 = 0.03;
          d2 = 0.04;
+
+        ctx.globalAlpha = 0.7;
+        ctx.fillStyle = "#FFFFFF";
+        ctx.roundRect(w*d0, w*d0, 400-(w*d0)*2, 400-(w*d0)*2, 20).fill(); 
+        ctx.fillStyle = "#000000";
+        ctx.globalAlpha = 1;
 
          maxw = w - +w * (d1 * 6);
 
          var yposs = 0;
-        yposs = maketxt(ctx,"فروردین","bbbs df sdfsdf sjd fposjdpo fjsdpo fj sdpof psodfj pso djf",0);
-       
-         yposs = maketxt(ctx,"اردیبهشت","dsdfsdfsdfsdoifjsdfopsodjfopsdfj sdf sdf sdf  sdf sf  sdf sdf s fs df sdf sd fs df sdf sf  sdf s fs f sf sdf s fsdf",yposs);
+         
+         
 
-         yposs = maketxt(ctx,"خرداد","bbbs df sdfsdf sjd fposjdpo fjsdpo fj sdpof psodfj pso djf",yposs);
+      
 
+
+
+       txts.forEach(function (fall) {
+       console.log(fall);
+                 yposs = maketxt(ctx,fall.title,fall.text,yposs);
+       });
 
         return x;
       }
@@ -119,7 +145,16 @@ adsc
 
 
 $("#add").click(function() {
-  $('#canvases').append(faal());
+
+var ffla = faal([
+  
+  {"title":Math.random()+"","text":Math.random()+""},{"title":Math.random()+"","text":Math.random()+""},{"title":Math.random()+"","text":Math.random()+""}
+  
+  ]);
+  
+  ffla.attr("data-length","14.5");
+  
+  $('#canvases').append(ffla);
 });
 
 
@@ -134,7 +169,7 @@ var to = 0;
 var tot = 0;
 var fcomplx  = "[1:v]loop=-1:10000:0[cov0];[cov0]scale="+mainwidth+":-1[cover];[0:v][cover]overlay=(main_w-overlay_w)/2:(main_h-overlay_h)/2:shortest=1[mainlayer];" ;
  $("canvas").each(function(itm) {
-    var layerlength = parseInt($(this).attr("data-length"));
+    var layerlength = parseFloat($(this).attr("data-length"));
     
     tot = tot+layerlength;
     
