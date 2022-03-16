@@ -9,19 +9,30 @@
   </head>
   <body>
 
-<div id="canvases" style="width:100%;;border:1px solid black">
+<div id="canvases" style="width:100%;border:1px solid black">
 </div>
+
+<textarea id="txt" style="width:100%;height:500px;direction:rtl">عنوان یک
+متن۱
+
+عنوان دو
+متن۲</textarea>
 
 <button id="add">
   add
 </button>
 <script>
 
+const regexpSize = /^(.*)\n(.*)(\n\n|$)/gm;
+const match = $("#txt").val().match(regexpSize);
+console.log(match);
+
+
 adsc
 
 function add() {
 
-mainwidth = 150;
+mainwidth = 480;
 
 var x = $('<canvas width="'+mainwidth+'" height="'+mainwidth+'"></canvas>');
 
@@ -37,7 +48,7 @@ $("#add").click(function() {
   add()
 });
 
-add();add();add()
+
 
 
 function run() {
