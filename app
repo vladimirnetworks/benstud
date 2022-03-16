@@ -16,8 +16,14 @@
   add
 </button>
 <script>
+
+adsc
+
 function add() {
-var x = $('<canvas width="480" height="480"></canvas>');
+
+mainwidth = 150;
+
+var x = $('<canvas width="'+mainwidth+'" height="'+mainwidth+'"></canvas>');
 
 x.attr("data-length","50");
 var ctx = x[0].getContext("2d");
@@ -41,14 +47,15 @@ var cmdx = 'ffmpeg ';
 var from = 0;
 var to = 0;
 var tot = 0;
-var fcomplx  = "[0:v][1:v]overlay=0:0[mainlayer];" ;
+var fcomplx  = "[1:v]loop=-1:10000:0[cov0];[cov0]scale="+mainwidth+":-1[cover];[0:v][cover]overlay=(main_w-overlay_w)/2:(main_h-overlay_h)/2:shortest=1[mainlayer];" ;
  $("canvas").each(function(itm) {
     var layerlength = parseInt($(this).attr("data-length"));
     
     tot = tot+layerlength;
     
-    itm = itm+1;
+  //  itm = itm+2;
     to = to+layerlength;
+    
     if (itm === 0) {
      var mainlayer = '[mainlayer]';
     } else {
@@ -62,7 +69,7 @@ var fcomplx  = "[0:v][1:v]overlay=0:0[mainlayer];" ;
     var layername = "";
     }
     
-    fcomplx += mainlayer+'[1:v]overlay=0:0:enable=\'between(t,'+from+','+to+')\''+layername; 
+    fcomplx += mainlayer+'['+(itm+2)+':v]overlay=0:0:enable=\'between(t,'+from+','+to+')\''+layername; 
     from = to;
     
     
@@ -70,8 +77,8 @@ var fcomplx  = "[0:v][1:v]overlay=0:0[mainlayer];" ;
  });
  
  
-cmdx += '-t '+tot+' -f lavfi -i color=c=white:s=480x480 -pix_fmt yuv420p '
-cmdx += '-i cover.png '
+cmdx += '-t '+tot+' -f lavfi -i color=c=white:s='+mainwidth+'x'+mainwidth+' '
+cmdx += '-i '+coverx+' '
 cmdx += "-i "+[...Array($("canvas").length).keys()].join(".png -i ")+".png ";
 cmdx += '-filter_complex "';
 

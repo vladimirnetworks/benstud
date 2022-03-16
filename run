@@ -4,6 +4,13 @@ var http = require("http"),
     fs = require("fs"),
     port = process.argv[2] || 8888;
 
+function checkfileexists(file) {
+
+return fs.existsSync(file)
+
+
+}
+
 
 const { exec } = require("child_process");
 
@@ -90,7 +97,20 @@ console.log(filename);
             }
 
             response.writeHead(200);
-            response.write(file, "binary");
+            
+            
+            if (checkfileexists('cover.png')) { 
+               zcover = 'cover.png';
+                console.log("png");
+	     } 
+
+            if (checkfileexists('cover.mp4')) { 
+               zcover = 'cover.mp4';
+               console.log("mp4");
+	     } 
+	     
+
+            response.write(file.replace("adsc","coverx = '"+zcover+"' \n"), "binary");
             response.end();
         });
     });
