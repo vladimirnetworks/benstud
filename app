@@ -17,7 +17,7 @@
 </button>
 <script>
 function add() {
-var x = $('<canvas width="90" height="90"></canvas>');
+var x = $('<canvas width="480" height="480"></canvas>');
 
 x.attr("data-length","50");
 var ctx = x[0].getContext("2d");
@@ -41,16 +41,16 @@ var cmdx = 'ffmpeg ';
 var from = 0;
 var to = 0;
 var tot = 0;
-var fcomplx  = "" ;
+var fcomplx  = "[0:v][1:v]overlay=0:0[mainlayer];" ;
  $("canvas").each(function(itm) {
     var layerlength = parseInt($(this).attr("data-length"));
     
     tot = tot+layerlength;
     
-    
+    itm = itm+1;
     to = to+layerlength;
     if (itm === 0) {
-     var mainlayer = '[0:v]';
+     var mainlayer = '[mainlayer]';
     } else {
      var mainlayer = '[layer'+(itm-1)+']';
     }
@@ -71,6 +71,7 @@ var fcomplx  = "" ;
  
  
 cmdx += '-t '+tot+' -f lavfi -i color=c=white:s=480x480 -pix_fmt yuv420p '
+cmdx += '-i cover.png '
 cmdx += "-i "+[...Array($("canvas").length).keys()].join(".png -i ")+".png ";
 cmdx += '-filter_complex "';
 
