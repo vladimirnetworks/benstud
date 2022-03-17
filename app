@@ -27,6 +27,12 @@
 عنوان پنج
 متن۵</textarea>
 
+
+
+<textarea id="title" style="width:100%;height:100px;direction:rtl">متن یک
+متن دو</textarea>
+
+
 <button id="gen">
   gen
 </button>
@@ -166,7 +172,7 @@ setTimeout(()=>{
          
          
         ctx.font = w * 0.15 + 'px Arial';
-        var txt = "خط الو \n خط دوم";
+        var txt = $("#title").val();
 
 
         ctx.globalAlpha = 0.7;
@@ -211,14 +217,17 @@ setTimeout(()=>{
 
 function gen() {
 
-const regexpSize = /^(.*)\n(.*)(\n\n|$)/gm;
-const match = $("#txt").val().match(regexpSize);
+const regexpSize = /^(.*?)\n(.*?)(\n\n)/gms;
+var x = $("#txt").val().trim();
+x = x+"\n\n"
+const match = x.match(regexpSize);
 var c = 0;
 var fal3 = [];
 var allfalls = [];
 match.forEach(function(i) {
 c++;
 
+console.log(i);
 var fallitem = i.trim().split("\n"); 
 
 var ttile = fallitem[0].trim();
@@ -340,12 +349,13 @@ cmdx += '-filter_complex "';
 
  
  cmdx += fcomplx+'"';
- cmdx += " aaa.mp4 -y";
+ cmdx += " -i music.mp3 -ss 20 -map 0:v -map "+($("canvas").length+2)+":a -shortest ";
+ cmdx += " out.mp4 -y";
 console.log(cmdx);
 //"[0:v][1:v]overlay=0:0" \
 //aaa.mp4 -y';
   $("canvas").each(function(itm) {
-  console.log($(this)[0].toDataURL());
+ // console.log($(this)[0].toDataURL());
 
   var dt = $(this)[0].toDataURL();
 $.ajax({
