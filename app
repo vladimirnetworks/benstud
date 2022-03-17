@@ -4,10 +4,10 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <style>
-     canvas {border:1px solid}
+     canvas {border:1px solid;max-width:400px;}
      </style>
   </head>
-  <body>
+  <body style="direction:rtl">
 
 <div id="canvases" style="width:100%;border:1px solid black">
 </div>
@@ -16,13 +16,22 @@
 متن۱
 
 عنوان دو
-متن۲</textarea>
+متن۲
 
-<button id="add">
-  add
+عنوان سه
+متن۳
+
+عنوان چهار
+متن۴
+
+عنوان پنج
+متن۵</textarea>
+
+<button id="gen">
+  gen
 </button>
 <script>
- w = 400;
+ w = 1080;
 CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
   if (w < 2 * r) r = w / 2;
   if (h < 2 * r) r = h / 2;
@@ -124,11 +133,15 @@ CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
       
 
 
+setTimeout(()=>{
 
        txts.forEach(function (fall) {
        
                  yposs = maketxt(ctx,fall.title,fall.text,yposs);
        });
+
+},100);
+
 
         return x;
       }
@@ -138,11 +151,10 @@ CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
  
  function makecover() {
 
-
         var x = $('<canvas width="100" height="100" style="direction:rtl"></canvas>');
-
-
-          var ctx = x[0].getContext('2d');
+ var ctx = x[0].getContext('2d');
+setTimeout(()=>{
+         
           ctx.textAlign = "left";
 
 
@@ -181,12 +193,12 @@ CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
         txt.split("\n").forEach(function(l) {
           
           l = l.trim();
-          ctx.fillText(l, (w-ctx.measureText(l).width)/2, ypos );
+          ctx.fillText(l, (w+ctx.measureText(l).width)/2, ypos );
           ypos += txt_height(ctx, l)+w*0.05;
          
 
         });
-       
+     },100);  
 
 
 
@@ -201,28 +213,79 @@ function gen() {
 
 const regexpSize = /^(.*)\n(.*)(\n\n|$)/gm;
 const match = $("#txt").val().match(regexpSize);
-console.log(match);
+var c = 0;
+var fal3 = [];
+var allfalls = [];
+match.forEach(function(i) {
+c++;
+
+var fallitem = i.trim().split("\n"); 
+
+var ttile = fallitem[0].trim();
+var ttxt = "";
+fallitem.forEach(function(t,i) {
+if (i > 0 ) {
+ttxt += t+" ";
+}
+});
+
+
+fal3.push({"title":ttile,"text":ttxt.trim()+""});
+
+if (c%3>0) {
+
+} else {
+
+if (fal3.length > 0) { 
+
+}
+allfalls.push(fal3);
+fal3 = [];
+
+
+}
+
+
+
+/*var ffla = faal([
+  
+  {"title":Math.random()+"","text":Math.random()+""},
+  {"title":Math.random()+"","text":Math.random()+""},
+  {"title":Math.random()+"","text":Math.random()+""}
+  
+  ]);
+*/
+//ffla.attr("data-length","14.5");
+  
+//$('#canvases').append(ffla);
+  
+
+}) ;
+if (fal3.length > 0) {
+allfalls.push(fal3);
+}
+
+
+allfalls.forEach(function(ff) {
+var ffla = faal(ff);
+
+ffla.attr("data-length","14.5");
+  
+$('#canvases').append(ffla);
+}) ;
 
 }
 
 adsc
 
 
-$("#add").click(function() {
-
+$("#gen").click(function() {
+$('#canvases').empty();
 var zz = makecover();
   zz.attr("data-length","1");
  $('#canvases').append(zz);
 
-var ffla = faal([
-  
-  {"title":Math.random()+"","text":Math.random()+""},{"title":Math.random()+"","text":Math.random()+""},{"title":Math.random()+"","text":Math.random()+""}
-  
-  ]);
-  
-  ffla.attr("data-length","14.5");
-  
-  $('#canvases').append(ffla);
+gen();
 
   
  
