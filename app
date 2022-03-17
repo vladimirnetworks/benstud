@@ -22,7 +22,7 @@
   add
 </button>
 <script>
-
+ w = 400;
 CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
   if (w < 2 * r) r = w / 2;
   if (h < 2 * r) r = h / 2;
@@ -100,7 +100,11 @@ CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
         );
         var ctx = x[0].getContext('2d');
 
-         w = 400;
+        
+         
+         x[0].width = w;
+         x[0].height = w;
+         
          d0 = 0.01;
          d1 = 0.03;
          d2 = 0.04;
@@ -122,12 +126,72 @@ CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
 
 
        txts.forEach(function (fall) {
-       console.log(fall);
+       
                  yposs = maketxt(ctx,fall.title,fall.text,yposs);
        });
 
         return x;
       }
+      
+      
+      
+ 
+ function makecover() {
+
+
+        var x = $('<canvas width="100" height="100" style="direction:rtl"></canvas>');
+
+
+          var ctx = x[0].getContext('2d');
+          ctx.textAlign = "left";
+
+
+
+         x[0].width = w;
+         x[0].height = w;
+         
+         console.log(x.width);
+         
+         
+        ctx.font = w * 0.15 + 'px Arial';
+        var txt = "خط الو \n خط دوم";
+
+
+        ctx.globalAlpha = 0.7;
+        ctx.fillStyle = "#FFFF00";
+        var th = 0;
+      
+        txt.split("\n").forEach(function(l) {        
+          l = l.trim();
+          th += txt_height(ctx, l)+w*0.05;
+        });
+  
+      
+      //  var txtheight = txt_height(ctx, txt);
+
+
+        var ypos = w-th;
+
+     
+        ctx.fillRect(0, ypos-txt_height(ctx, "ش")-w*0.025, w,th+w*0.025); 
+
+        ctx.fillStyle = "#000000";
+        ctx.globalAlpha = 1;
+
+        txt.split("\n").forEach(function(l) {
+          
+          l = l.trim();
+          ctx.fillText(l, (w-ctx.measureText(l).width)/2, ypos );
+          ypos += txt_height(ctx, l)+w*0.05;
+         
+
+        });
+       
+
+
+
+       return x;
+      }     
 </script>
 <script>
 
@@ -146,6 +210,10 @@ adsc
 
 $("#add").click(function() {
 
+var zz = makecover();
+  zz.attr("data-length","1");
+ $('#canvases').append(zz);
+
 var ffla = faal([
   
   {"title":Math.random()+"","text":Math.random()+""},{"title":Math.random()+"","text":Math.random()+""},{"title":Math.random()+"","text":Math.random()+""}
@@ -155,6 +223,11 @@ var ffla = faal([
   ffla.attr("data-length","14.5");
   
   $('#canvases').append(ffla);
+
+  
+ 
+  
+  
 });
 
 
