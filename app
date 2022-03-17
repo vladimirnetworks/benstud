@@ -4,15 +4,45 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <style>
-     canvas {border:1px solid;max-width:400px;}
+     canvas {border:1px solid;max-width:50px;}
      </style>
+  
+  
+  
+  <style>
+
+        
+        @font-face {
+            font-family: "mainfont";
+            src: url("irans.ttf") format("truetype");
+        }
+        
+        body {
+            font-family: mainfont;
+        }
+        
+
+    </style>
+    
+  
+  
   </head>
+  
+  
+  
   <body style="direction:rtl">
 
-<div id="canvases" style="width:100%;border:1px solid black">
+<div>.</div>
+<div id="canvases" style="width:100%;border:1px solid black;overflow:auto;height:50px">
 </div>
 
-<textarea id="txt" style="width:100%;height:500px;direction:rtl">عنوان یک
+
+
+<textarea id="title" style="width:100%;height:50px;direction:rtl">متن یک
+متن دو</textarea>
+
+
+<textarea id="txt" style="width:100%;height:250px;direction:rtl">عنوان یک
 متن۱
 
 عنوان دو
@@ -29,10 +59,12 @@
 
 
 
-<textarea id="title" style="width:100%;height:100px;direction:rtl">متن یک
-متن دو</textarea>
 
+<input id="music" value="music.mp3"/>
 
+<input id="musicstart" value="00:00:05"/>
+
+<br>
 <button id="gen">
   gen
 </button>
@@ -61,13 +93,13 @@ CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
       }
 
       function maketxt(ctx,txt,cap,beginY=0) {
-        ctx.font = w * 0.06 + 'px Arial';
+        ctx.font = w * 0.06 + 'px mainfont';
         ctx.textAlign = 'left';
         
         var ypos = beginY+txt_height(ctx, txt) + w * d1;
         ctx.fillText(txt, w - w * d1 - ctx.measureText(txt).width, ypos);
 
-        ctx.font = w * d2 + 'px Arial';
+        ctx.font = w * d2 + 'px mainfont';
 
         ypos += txt_height(ctx, txt) + w * d1
         linebreak(
@@ -126,7 +158,7 @@ CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
 
         ctx.globalAlpha = 0.7;
         ctx.fillStyle = "#FFFFFF";
-        ctx.roundRect(w*d0, w*d0, 400-(w*d0)*2, 400-(w*d0)*2, 20).fill(); 
+        ctx.roundRect(w*d0, w*d0, w-(w*d0)*2, w-(w*d0)*2, 20).fill(); 
         ctx.fillStyle = "#000000";
         ctx.globalAlpha = 1;
 
@@ -168,10 +200,10 @@ setTimeout(()=>{
          x[0].width = w;
          x[0].height = w;
          
-         console.log(x.width);
+
          
          
-        ctx.font = w * 0.15 + 'px Arial';
+        ctx.font = w * 0.15 + 'px mainfont';
         var txt = $("#title").val();
 
 
@@ -196,10 +228,16 @@ setTimeout(()=>{
         ctx.fillStyle = "#000000";
         ctx.globalAlpha = 1;
 
+ctx.strokeStyle = '#FFFFFF';
+ctx.lineWidth = w*0.05;
+
         txt.split("\n").forEach(function(l) {
           
           l = l.trim();
-          ctx.fillText(l, (w+ctx.measureText(l).width)/2, ypos );
+          
+          ctx.strokeText(l, (w+ctx.measureText(l).width)/2, ypos );
+           ctx.fillText(l, (w+ctx.measureText(l).width)/2, ypos );
+          
           ypos += txt_height(ctx, l)+w*0.05;
          
 
@@ -227,7 +265,7 @@ var allfalls = [];
 match.forEach(function(i) {
 c++;
 
-console.log(i);
+
 var fallitem = i.trim().split("\n"); 
 
 var ttile = fallitem[0].trim();
@@ -282,6 +320,13 @@ ffla.attr("data-length","14.5");
   
 $('#canvases').append(ffla);
 }) ;
+
+
+setTimeout(()=>{
+
+run();
+
+},1000);
 
 }
 
@@ -349,13 +394,12 @@ cmdx += '-filter_complex "';
 
  
  cmdx += fcomplx+'"';
- cmdx += " -i music.mp3 -ss 20 -map 0:v -map "+($("canvas").length+2)+":a -shortest ";
+ cmdx += " -i "+$("#music").val()+" -ss "+$("#musicstart").val()+" -map 0:v -map "+($("canvas").length+2)+":a -shortest ";
  cmdx += " out.mp4 -y";
 console.log(cmdx);
-//"[0:v][1:v]overlay=0:0" \
-//aaa.mp4 -y';
+
   $("canvas").each(function(itm) {
- // console.log($(this)[0].toDataURL());
+
 
   var dt = $(this)[0].toDataURL();
 $.ajax({
@@ -364,7 +408,9 @@ $.ajax({
                         url: "gen/"+itm,
                         data: dt,
                         success:function() {
-                             cmd("ls -l");   
+                              if (itm+1===$("canvas").length) {
+                               cmd(cmdx);
+                              }
                         }
 
 });
@@ -379,7 +425,7 @@ $.ajax({
                         url: "cmd",
                         data: cmdv,
                         success:function() {
-                               
+                             
                         }
 
 });

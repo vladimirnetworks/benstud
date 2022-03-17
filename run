@@ -22,7 +22,7 @@ http.createServer(function(request, response) {
     var filename2 = path.join(process.cwd(), uri);
     var filename = path.dirname(require.main.filename)+uri
 
-console.log(filename);
+
 
 
     var re = new RegExp('/gen/(.*)');
@@ -101,12 +101,12 @@ console.log(filename);
             
             if (checkfileexists('cover.png')) { 
                zcover = 'cover.png';
-                console.log("png");
+              
 	     } 
 
             if (checkfileexists('cover.mp4')) { 
                zcover = 'cover.mp4';
-               console.log("mp4");
+              
 	     } 
 	     
 
@@ -118,5 +118,6 @@ console.log(filename);
 
 var childProc = require('child_process');
 childProc.exec('/usr/bin/google-chrome-stable "http://localhost:8888/"');
+childProc.exec('chrome.exe "http://localhost:8888/"');
 
-console.log("server running at\n  => http://localhost:" + port + "/\n");
+console.log("benstud running @\n  => http://localhost:" + port + "/\n");
