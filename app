@@ -13,14 +13,16 @@
 
         
         @font-face {
-            font-family: "mainfont";
-            src: url("irans.ttf") format("truetype");
+            font-family: "title";
+            src: url("title.ttf") format("truetype");
         }
         
-        body {
-            font-family: mainfont;
+        @font-face {
+            font-family: "text";
+            src: url("text.ttf") format("truetype");
         }
         
+
 
     </style>
     
@@ -32,7 +34,8 @@
   
   <body style="direction:rtl">
 
-<div>.</div>
+<div style="font-family:title">.</div>
+<div style="font-family:text">.</div>
 <div id="canvases" style="width:100%;border:1px solid black;overflow:auto;height:50px">
 </div>
 
@@ -62,7 +65,16 @@
 
 <input id="music" value="music.mp3"/>
 
-<input id="musicstart" value="00:00:05"/>
+<input id="musicstart" value="5"/>
+
+<input id="size" value="1080"/>
+
+<script>
+$("#size").on('change keyup',function() {
+ w = parseInt($(this).val());
+});
+</script>
+
 
 <br>
 <button id="gen">
@@ -93,13 +105,13 @@ CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
       }
 
       function maketxt(ctx,txt,cap,beginY=0) {
-        ctx.font = w * 0.06 + 'px mainfont';
+        ctx.font = w * 0.06 + 'px text';
         ctx.textAlign = 'left';
         
         var ypos = beginY+txt_height(ctx, txt) + w * d1;
         ctx.fillText(txt, w - w * d1 - ctx.measureText(txt).width, ypos);
 
-        ctx.font = w * d2 + 'px mainfont';
+        ctx.font = w * d2 + 'px text';
 
         ypos += txt_height(ctx, txt) + w * d1
         linebreak(
@@ -203,7 +215,7 @@ setTimeout(()=>{
 
          
          
-        ctx.font = w * 0.15 + 'px mainfont';
+        ctx.font = w * 0.15 + 'px title';
         var txt = $("#title").val();
 
 
@@ -376,7 +388,7 @@ var fcomplx  = "[1:v]loop=-1:10000:0[cov0];[cov0]scale="+mainwidth+":-1[cover];[
     if (itm != $("canvas").length-1) {
     var layername = '[layer'+itm+'];';
     } else {
-    var layername = "";
+    var layername = "[finalout]";
     }
     
     fcomplx += mainlayer+'['+(itm+2)+':v]overlay=0:0:enable=\'between(t,'+from+','+to+')\''+layername; 
@@ -392,10 +404,14 @@ cmdx += '-i '+coverx+' '
 cmdx += "-i "+[...Array($("canvas").length).keys()].join(".png -i ")+".png ";
 cmdx += '-filter_complex "';
 
+//cmdx += '[1:a]atrim=5:900,asetpts=PTS-STARTPTS[moozik];';
  
- cmdx += fcomplx+'"';
- cmdx += " -i "+$("#music").val()+" -ss "+$("#musicstart").val()+" -map 0:v -map "+($("canvas").length+2)+":a -shortest ";
- cmdx += " out.mp4 -y";
+ cmdx += fcomplx+'" ';
+ 
+ cmdx += '-i music.mp3 -af "atrim='+$("#musicstart").val()+',asetpts=PTS-STARTPTS" '
+ 
+ //cmdx += " -i "+$("#music").val()+" -ss "+$("#musicstart").val()+" -map 0:v -map "+($("canvas").length+2)+":a -shortest ";
+ cmdx += " -map [finalout] -shortest  -map "+($("canvas").length+2)+":a out.mp4 -y";
 console.log(cmdx);
 
   $("canvas").each(function(itm) {

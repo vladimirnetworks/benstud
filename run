@@ -18,9 +18,19 @@ const { exec } = require("child_process");
 
 http.createServer(function(request, response) {
 
+
+
+
     var uri = url.parse(request.url).pathname
     var filename2 = path.join(process.cwd(), uri);
-    var filename = path.dirname(require.main.filename)+uri
+    
+    if (uri == '/') {
+     var filename = path.dirname(require.main.filename)+uri
+    } else {
+     var filename = process.cwd()+uri
+    }
+    
+console.log(filename);
 
 
 
@@ -86,7 +96,9 @@ http.createServer(function(request, response) {
             return;
         }
 
-        if (fs.statSync(filename).isDirectory()) filename += '/app';
+        if (fs.statSync(filename).isDirectory())  {
+          filename += '/app';
+        }
 
         fs.readFile(filename, "binary", function(err, file) {
             if (err) {
@@ -117,7 +129,7 @@ http.createServer(function(request, response) {
 }).listen(parseInt(port, 10));
 
 var childProc = require('child_process');
-childProc.exec('/usr/bin/google-chrome-stable "http://localhost:8888/"');
+//childProc.exec('/usr/bin/google-chrome-stable "http://localhost:8888/"');
 childProc.exec('chrome.exe "http://localhost:8888/"');
 
 console.log("benstud running @\n  => http://localhost:" + port + "/\n");
