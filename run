@@ -109,7 +109,8 @@ console.log(filename);
             }
 
             response.writeHead(200);
-            
+           
+           /* 
             
             if (checkfileexists('cover.png')) { 
                zcover = 'cover.png';
@@ -120,9 +121,12 @@ console.log(filename);
                zcover = 'cover.mp4';
               
 	     } 
-	     
+	     */
 
-            response.write(file.replace("adsc","coverx = '"+zcover+"' \n"), "binary");
+            response.write(file.replace("adsc","coverx = 'nothing' \n"), "binary");
+            
+            
+            
             response.end();
         });
     });

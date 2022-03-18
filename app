@@ -9,22 +9,7 @@
   
   
   
-  <style>
 
-        
-        @font-face {
-            font-family: "title";
-            src: url("title.ttf") format("truetype");
-        }
-        
-        @font-face {
-            font-family: "text";
-            src: url("text.ttf") format("truetype");
-        }
-        
-
-
-    </style>
     
   
   
@@ -61,15 +46,55 @@
 متن۵</textarea>
 
 
-
+<br>
 
 <input id="music" value="music.mp3"/>
+<br>
+<input id="cover" value="cover.mp4"/>
 
+<br>
+<input id="titlefont" value="title.ttf"/>
+<br>
+<input id="textfont" value="text.ttf"/>
+<br>
 <input id="musicstart" value="5"/>
-
+<br>
 <input id="size" value="1080"/>
-
+<br>
 <script>
+
+function loadfonttodom(name,font) {
+  console.log(name+","+font);
+  $("style[data-name='"+name+"']").remove();
+  
+  
+
+$("head").prepend("<style data-name=\""+name+"\" type=\"text/css\">" + 
+                                "@font-face {\n" +
+                                    "\tfont-family: \""+name+"\";\n" + 
+                                    "\tsrc: url('"+font+"') format('truetype');\n" + 
+                                "}\n"+"</style>");
+                            
+                            
+                            
+}
+
+
+$("#titlefont").on('change keyup',function() {
+ loadfonttodom("title",$(this).val());
+});
+
+$("#textfont").on('change keyup',function() {
+ loadfonttodom("text",$(this).val());
+});
+
+$(document).ready(function() {
+
+ loadfonttodom("title",$("#titlefont").val());
+ loadfonttodom("text",$("#textfont").val());
+});
+
+
 $("#size").on('change keyup',function() {
  w = parseInt($(this).val());
 });
@@ -400,7 +425,7 @@ var fcomplx  = "[1:v]loop=-1:10000:0[cov0];[cov0]scale="+mainwidth+":-1[cover];[
  
  
 cmdx += '-t '+tot+' -f lavfi -i color=c=white:s='+mainwidth+'x'+mainwidth+' '
-cmdx += '-i '+coverx+' '
+cmdx += '-i '+$("#cover").val()+' '
 cmdx += "-i "+[...Array($("canvas").length).keys()].join(".png -i ")+".png ";
 cmdx += '-filter_complex "';
 
