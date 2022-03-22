@@ -336,7 +336,7 @@ ctx.lineWidth = w*0.05;
           l = l.trim();
           
           /**/
-          fsiz2 = Math.pow(0.9 , l.trim().length*0.1)*w/5.5;
+          fsiz2 = Math.pow(0.9 , l.trim().length*0.35)*w/4;
           
                     console.log(l+" is"+fsiz2);
                     
