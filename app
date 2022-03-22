@@ -21,6 +21,11 @@
 
 <div style="font-family:title">.</div>
 <div style="font-family:text">.</div>
+
+ <input type="color" id="thumb" name="thumb"
+           value="#e66465">
+           
+           
 <div id="canvases" style="width:100%;border:1px solid black;overflow:auto;height:50px">
 </div>
 
@@ -306,7 +311,7 @@ setTimeout(()=>{
 
 
         ctx.globalAlpha = 0.7;
-        ctx.fillStyle = "#FFFF00";
+        ctx.fillStyle = $("#thumb").val();
         var th = 0;
       
         txt.split("\n").forEach(function(l) {        
@@ -466,7 +471,8 @@ gen();
 
 
 function run() {
-var cmdx = 'zffmpeg ';
+var cmdx = "del out.mp4\n";
+cmdx += 'ffmpeg ';
 
 mainwidth = w;
 var from = 0;
