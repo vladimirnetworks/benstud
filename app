@@ -488,7 +488,7 @@ gen();
 
 function run() {
 var cmdx = "del out.mp4\n";
-cmdx += 'xffmpeg ';
+cmdx += 'ffmpeg ';
 
 mainwidth = w;
 var from = 0;
