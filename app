@@ -185,6 +185,10 @@ CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
           }
           
 
+          if (fsiz < w/45) {
+           fsiz = w/45
+          }
+
           
           ctx.font = fsiz + 'px text';
           
@@ -367,13 +371,13 @@ setTimeout(()=>{
         
         
         
-        ctx.font = fsiz2*0.55 + 'px title';
+        ctx.font = fsiz2*0.35 + 'px title';
         
         
          ctx.fillStyle = "#FFFFFF";
          
           ctx.textAlign = "right";
-         ctx.fillText($("#tag").val().trim(), (w+ctx.measureText($("#tag").val().trim()).width)/2, ypos );
+         ctx.fillText($("#tag").val().trim(), (w+ctx.measureText($("#tag").val().trim()).width)/2, ypos-ypos*0.08 );
         
         
         
