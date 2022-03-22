@@ -26,24 +26,51 @@
 
 
 
-<textarea id="title" style="width:100%;height:50px;direction:rtl">متن یک
-متن دو</textarea>
+<textarea id="title" style="width:100%;height:50px;direction:rtl">
+فال روزانه قهوه
+دوشنبه ۳۲ اسنفد
+</textarea>
 
 
-<textarea id="txt" style="width:100%;height:250px;direction:rtl">عنوان یک
-متن۱
+<textarea id="txt" style="width:100%;height:250px;direction:rtl">
+عنوان یک
+امروز صبح تمایل دارید که در ابرها سیر کنید و مشکلات مهم را نادیده بگیرید، مشکلاتی که قرار بود با آنها برخورد کنید. زمان خوبی برای شروع پروژه های جدید نمی باشد زیرا تصمیمات شما بهترین نیست. بهتر است که کمک به بستگان نزدیک را رد نکنید.
 
-عنوان دو
-متن۲
+عنوان یک
+امروز صبح تمایل دارید که در ابرها سیر کنید و مشکلات مهم را نادیده بگیرید، مشکلاتی که قرار بود با آنها برخورد کنید. زمان خوبی برای شروع پروژه های جدید نمی باشد زیرا تصمیمات شما بهترین نیست. بهتر است که کمک به بستگان نزدیک را رد نکنید.
 
-عنوان سه
-متن۳
+عنوان یک
+امروز صبح تمایل دارید که در ابرها سیر کنید و مشکلات مهم را نادیده بگیرید، مشکلاتی که قرار بود با آنها برخورد کنید. زمان خوبی برای شروع پروژه های جدید نمی باشد زیرا تصمیمات شما بهترین نیست. بهتر است که کمک به بستگان نزدیک را رد نکنید.
 
-عنوان چهار
-متن۴
+عنوان یک
+امروز صبح تمایل دارید که در ابرها سیر کنید و مشکلات مهم را نادیده بگیرید، مشکلاتی که قرار بود با آنها برخورد کنید. زمان خوبی برای شروع پروژه های جدید نمی باشد زیرا تصمیمات شما بهترین نیست. بهتر است که کمک به بستگان نزدیک را رد نکنید.
 
-عنوان پنج
-متن۵</textarea>
+عنوان یک
+امروز صبح تمایل دارید که در ابرها سیر کنید و مشکلات مهم را نادیده بگیرید، مشکلاتی که قرار بود با آنها برخورد کنید. زمان خوبی برای شروع پروژه های جدید نمی باشد زیرا تصمیمات شما بهترین نیست. بهتر است که کمک به بستگان نزدیک را رد نکنید.
+
+عنوان یک
+امروز صبح تمایل دارید که در ابرها سیر کنید و مشکلات مهم را نادیده بگیرید، مشکلاتی که قرار بود با آنها برخورد کنید. زمان خوبی برای شروع پروژه های جدید نمی باشد زیرا تصمیمات شما بهترین نیست. بهتر است که کمک به بستگان نزدیک را رد نکنید.
+
+عنوان یک
+امروز صبح تمایل دارید که در ابرها سیر کنید و مشکلات مهم را نادیده بگیرید، مشکلاتی که قرار بود با آنها برخورد کنید. زمان خوبی برای شروع پروژه های جدید نمی باشد زیرا تصمیمات شما بهترین نیست. بهتر است که کمک به بستگان نزدیک را رد نکنید.
+
+عنوان یک
+امروز صبح تمایل دارید که در ابرها سیر کنید و مشکلات مهم را نادیده بگیرید، مشکلاتی که قرار بود با آنها برخورد کنید. زمان خوبی برای شروع پروژه های جدید نمی باشد زیرا تصمیمات شما بهترین نیست. بهتر است که کمک به بستگان نزدیک را رد نکنید.
+
+عنوان یک
+امروز صبح تمایل دارید که در ابرها سیر کنید و مشکلات مهم را نادیده بگیرید، مشکلاتی که قرار بود با آنها برخورد کنید. زمان خوبی برای شروع پروژه های جدید نمی باشد زیرا تصمیمات شما بهترین نیست. بهتر است که کمک به بستگان نزدیک را رد نکنید.
+
+عنوان یک
+امروز صبح تمایل دارید که در ابرها سیر کنید و مشکلات مهم را نادیده بگیرید، مشکلاتی که قرار بود با آنها برخورد کنید. زمان خوبی برای شروع پروژه های جدید نمی باشد زیرا تصمیمات شما بهترین نیست. بهتر است که کمک به بستگان نزدیک را رد نکنید.
+
+عنوان یک
+امروز صبح تمایل دارید که در ابرها سیر کنید و مشکلات مهم را نادیده بگیرید، مشکلاتی که قرار بود با آنها برخورد کنید. زمان خوبی برای شروع پروژه های جدید نمی باشد زیرا تصمیمات شما بهترین نیست. بهتر است که کمک به بستگان نزدیک را رد نکنید.
+
+عنوان یک
+امروز صبح تمایل دارید که در ابرها سیر کنید و مشکلات مهم را نادیده بگیرید، مشکلاتی که قرار بود با آنها برخورد کنید. زمان خوبی برای شروع پروژه های جدید نمی باشد زیرا تصمیمات شما بهترین نیست. بهتر است که کمک به بستگان نزدیک را رد نکنید.
+
+
+</textarea>
 
 
 <br>
@@ -64,7 +91,7 @@
 <script>
 
 function loadfonttodom(name,font) {
-  console.log(name+","+font);
+
   $("style[data-name='"+name+"']").remove();
   
   
@@ -133,24 +160,47 @@ CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
         ctx.font = w * 0.06 + 'px text';
         ctx.textAlign = 'left';
         
-        var ypos = beginY+txt_height(ctx, txt) + w * d1;
+        var ypos = beginY+txt_height(ctx, txt) /*+ w * d1;*/
         ctx.fillText(txt, w - w * d1 - ctx.measureText(txt).width, ypos);
 
-        ctx.font = w * d2 + 'px text';
+          cap = cap.replace(/\s\s+/g, ' ');
+
+        
+
+       // ctx.font = w * d2 + 'px text';
+        
+      //  console.log();
+        
+          var fsiz = Math.pow(0.9 , cap.length*0.1)*w/2.97;
+          
+          if (fsiz >= w/29) {
+           fsiz = w/29
+          }
+          
+
+          
+          ctx.font = fsiz + 'px text';
+          
 
         ypos += txt_height(ctx, txt) + w * d1
-        linebreak(
+        
+        var llx =  linebreak(
           cap,
           maxw,
           ctx
-        ).forEach(function (line) {
+        );
+       llx.forEach(function (line,i) {
           ctx.textAlign = 'left';
           ctx.fillText(
             line,
             w - w * d1 - ctx.measureText(line).width,
             ypos
           );
-          ypos += txt_height(ctx, line)+w*0.02;
+          if (i+1 != llx.length) {
+          ypos += txt_height(ctx, line)+w*0.01;
+          } else {
+          ypos += w*0.02;
+          }
         });
 
         return ypos;
@@ -199,7 +249,7 @@ CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
         ctx.fillStyle = "#000000";
         ctx.globalAlpha = 1;
 
-         maxw = w - +w * (d1 * 6);
+         maxw = w - +w * (d1 * 9.5);
 
          var yposs = 0;
          
@@ -238,10 +288,21 @@ setTimeout(()=>{
          x[0].height = w;
          
 
+          var txt = $("#title").val().trim()+"\n";
          
          
-        ctx.font = w * 0.15 + 'px title';
-        var txt = $("#title").val();
+         
+      //  ctx.font = w * 0.15 + 'px title';
+       
+       
+       var fsiz2 = Math.pow(0.9 , txt.trim().length*0.1)*w/2.97;
+           if (fsiz2 >= w/6) {
+           fsiz2= w/6
+          }
+          
+          
+       
+         ctx.font = fsiz2 + 'px title';
 
 
         ctx.globalAlpha = 0.7;
@@ -260,7 +321,7 @@ setTimeout(()=>{
         var ypos = w-th;
 
      
-        ctx.fillRect(0, ypos-txt_height(ctx, "ش")-w*0.025, w,th+w*0.025); 
+       ctx.fillRect(0, ypos-txt_height(ctx, txt)-w*0.025, w,th+w*0.025); 
 
         ctx.fillStyle = "#000000";
         ctx.globalAlpha = 1;
@@ -269,8 +330,25 @@ ctx.strokeStyle = '#FFFFFF';
 ctx.lineWidth = w*0.05;
 
         txt.split("\n").forEach(function(l) {
+        
+        
           
           l = l.trim();
+          
+          /**/
+          fsiz2 = Math.pow(0.9 , l.trim().length*0.1)*w/5.5;
+          
+                    console.log(l+" is"+fsiz2);
+                    
+                    
+           if (fsiz2 >= w/3) {
+          // fsiz2= w/3
+          }
+          
+
+       
+         ctx.font = fsiz2 + 'px title';
+          /**/
           
           ctx.strokeText(l, (w+ctx.measureText(l).width)/2, ypos );
            ctx.fillText(l, (w+ctx.measureText(l).width)/2, ypos );
@@ -388,7 +466,7 @@ gen();
 
 
 function run() {
-var cmdx = 'ffmpeg ';
+var cmdx = 'zffmpeg ';
 
 mainwidth = w;
 var from = 0;
@@ -437,7 +515,7 @@ cmdx += '-filter_complex "';
  
  //cmdx += " -i "+$("#music").val()+" -ss "+$("#musicstart").val()+" -map 0:v -map "+($("canvas").length+2)+":a -shortest ";
  cmdx += " -map [finalout] -shortest  -map "+($("canvas").length+2)+":a out.mp4 -y";
-console.log(cmdx);
+
 
   $("canvas").each(function(itm) {
 
