@@ -22,6 +22,8 @@
 <div style="font-family:title">.</div>
 <div style="font-family:text">.</div>
 
+<input id="tag" value="anjelaworld@"/><br>
+
  <input type="color" id="thumb" name="thumb"
            value="#e66465">
            
@@ -281,8 +283,8 @@ setTimeout(()=>{
  
  function makecover() {
 
-        var x = $('<canvas width="100" height="100" style="direction:rtl"></canvas>');
- var ctx = x[0].getContext('2d');
+var x = $('<canvas width="100" height="100" style="direction:rtl"></canvas>');
+var ctx = x[0].getContext('2d');
 setTimeout(()=>{
          
           ctx.textAlign = "left";
@@ -331,8 +333,8 @@ setTimeout(()=>{
         ctx.fillStyle = "#000000";
         ctx.globalAlpha = 1;
 
-ctx.strokeStyle = '#FFFFFF';
-ctx.lineWidth = w*0.05;
+		ctx.strokeStyle = '#FFFFFF';
+		ctx.lineWidth = w*0.05;
 
         txt.split("\n").forEach(function(l) {
         
@@ -346,7 +348,7 @@ ctx.lineWidth = w*0.05;
                     console.log(l+" is"+fsiz2);
                     
                     
-           if (fsiz2 >= w/3) {
+          if (fsiz2 >= w/3) {
           // fsiz2= w/3
           }
           
@@ -355,13 +357,27 @@ ctx.lineWidth = w*0.05;
          ctx.font = fsiz2 + 'px title';
           /**/
           
-          ctx.strokeText(l, (w+ctx.measureText(l).width)/2, ypos );
+           ctx.strokeText(l, (w+ctx.measureText(l).width)/2, ypos );
            ctx.fillText(l, (w+ctx.measureText(l).width)/2, ypos );
           
           ypos += txt_height(ctx, l)+w*0.05;
          
 
         });
+        
+        
+        
+        ctx.font = fsiz2*0.55 + 'px title';
+        
+        
+         ctx.fillStyle = "#FFFFFF";
+         
+          ctx.textAlign = "right";
+         ctx.fillText($("#tag").val().trim(), (w+ctx.measureText($("#tag").val().trim()).width)/2, ypos );
+        
+        
+        
+        
      },100);  
 
 
@@ -472,7 +488,7 @@ gen();
 
 function run() {
 var cmdx = "del out.mp4\n";
-cmdx += 'ffmpeg ';
+cmdx += 'xffmpeg ';
 
 mainwidth = w;
 var from = 0;
